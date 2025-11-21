@@ -6,8 +6,369 @@
     <title>Portfolio - Data Scientist & Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="animations.css">
+    <style>
+        /* Elegant Minimalist Theme - Clean & Unique */
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #181818;
+            --bg-tertiary: #222222;
+            
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-hover: #7c3aed;
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            
+            --border-color: #2d2d2d;
+            --border-accent: rgba(99, 102, 241, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+        }
+        
+        /* Smooth Backgrounds */
+        .bg-gradient-dark {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+        
+        .bg-secondary {
+            background-color: var(--bg-secondary);
+        }
+        
+        /* Minimalist Card Design */
+        .card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-accent);
+            background: rgba(34, 34, 34, 0.9);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Clean Button Design */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-primary);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 1px solid var(--border-accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+        }
+        
+        /* Filter Buttons */
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.938rem;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--border-accent);
+            color: var(--accent-primary);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* Profile Section */
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-ring {
+            position: absolute;
+            inset: -6px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--bg-primary);
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Skill Badges - Minimal Design */
+        .skill-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--border-accent);
+            color: var(--accent-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Tech Tags */
+        .tech-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.813rem;
+            font-weight: 500;
+        }
+        
+        /* Social Icons - Clean Minimalist */
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .social-icon:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal */
+        .modal-backdrop {
+            background: rgba(15, 15, 15, 0.96);
+            backdrop-filter: blur(8px);
+        }
+        
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Accent Line */
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+            margin: 16px auto 0;
+        }
+        
+        .accent-line-left {
+            margin: 16px 0 0;
+        }
+        
+        /* Floating Shapes - Subtle */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.08;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+            top: 5%;
+            left: -10%;
+        }
+        
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+            bottom: 10%;
+            right: -5%;
+            animation-delay: 8s;
+        }
+        
+        .shape-3 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--accent-hover) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            animation-delay: 16s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(40px, -40px); }
+            66% { transform: translate(-30px, 30px); }
+        }
+        
+        /* Scroll Indicator */
+        .scroll-mouse {
+            width: 22px;
+            height: 36px;
+            border: 2px solid var(--accent-primary);
+            border-radius: 11px;
+            position: relative;
+        }
+        
+        .scroll-mouse::before {
+            content: '';
+            width: 3px;
+            height: 7px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+            position: absolute;
+            top: 7px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes scroll {
+            0% { opacity: 1; top: 7px; }
+            100% { opacity: 0; top: 18px; }
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+        
+        p {
+            color: var(--text-secondary);
+        }
+        
+        /* Border Accent Top */
+        .border-accent-top {
+            border-top: 2px solid var(--accent-primary);
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Image Styles */
+        .gallery-image {
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+        
+        /* Section Spacing */
+        section {
+            position: relative;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden">
 
     <!-- Floating Background Elements -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -17,30 +378,26 @@
     </div>
 
     <!-- Hero / Introduction Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 px-6 py-16 overflow-hidden">
-        <div class="absolute inset-0 hero-pattern opacity-10"></div>
-        
+    <section id="hero" class="relative min-h-screen flex items-center justify-center bg-gradient-dark px-6 py-16 overflow-hidden">
         <div class="text-center max-w-4xl relative z-10 hero-content">
-            <div class="mb-8 profile-container">
+            <div class="mb-10 profile-container">
                 <div class="profile-ring"></div>
-                <img id="profilePhoto" src="assets/profile.jpg" alt="Profile Photo" 
-                     class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-2xl object-cover profile-image">
+                <img id="profilePhoto" src="assets/profile.jpg" alt="Profile Photo" class="profile-image">
             </div>
-            <h1 id="heroName" class="text-5xl md:text-7xl font-bold text-gray-900 mb-4 tracking-tight hero-name">
+            <h1 id="heroName" class="text-5xl md:text-7xl font-bold mb-5 tracking-tight hero-name">
                 <!-- Nama akan dimuat dari JSON -->
             </h1>
             <div class="headline-container mb-6">
-                <p id="heroHeadline" class="text-xl md:text-2xl text-indigo-600 font-semibold hero-headline">
+                <p id="heroHeadline" class="text-xl md:text-2xl font-semibold hero-headline" style="color: var(--accent-primary);">
                     <!-- Headline akan dimuat dari JSON -->
                 </p>
             </div>
-            <p id="heroShortBio" class="text-gray-600 text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed hero-bio">
+            <p id="heroShortBio" class="text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed hero-bio">
                 <!-- Short bio akan dimuat dari JSON -->
             </p>
-            <button id="moreAboutBtn" 
-                    class="btn-primary group">
+            <button id="moreAboutBtn" class="btn-primary group">
                 <span>More About Me</span>
-                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </button>
@@ -53,43 +410,40 @@
     </section>
 
     <!-- About Me Expanded Section -->
-    <section id="aboutExpanded" class="hidden bg-white py-20 px-6 border-t-4 border-indigo-600 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        
+    <section id="aboutExpanded" class="hidden bg-secondary py-20 px-6 border-accent-top relative overflow-hidden">
         <div class="max-w-5xl mx-auto relative z-10 about-content">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 section-title">
-                <span class="inline-block">About Me</span>
+            <h2 class="text-4xl md:text-5xl font-bold mb-3 section-title">
+                About Me
             </h2>
-            <p id="longBio" class="text-gray-700 text-lg md:text-xl leading-relaxed mb-12 fade-in-up">
+            <div class="accent-line accent-line-left mb-10"></div>
+            
+            <p id="longBio" class="text-lg md:text-xl leading-relaxed mb-12 fade-in-up">
                 <!-- Long bio akan dimuat dari JSON -->
             </p>
             
-            <h3 class="text-3xl font-bold text-gray-900 mb-6 section-subtitle">Skills & Technologies</h3>
+            <h3 class="text-3xl font-bold mb-6 section-subtitle">Skills & Technologies</h3>
             <div id="skillsContainer" class="flex flex-wrap gap-3 mb-12">
                 <!-- Skills badges akan dimuat dari JSON -->
             </div>
             
-            <button id="closeAboutBtn" 
-                    class="text-indigo-600 hover:text-indigo-800 font-semibold text-lg flex items-center gap-2 transition-all hover:gap-3">
+            <button id="closeAboutBtn" class="btn-secondary hover-lift">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                 </svg>
-                Back to Top
+                <span>Back to Top</span>
             </button>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-6 bg-gray-50 relative overflow-hidden">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-20 animate-blob"></div>
-        
+    <section id="portfolio" class="py-20 px-6 relative overflow-hidden" style="background-color: var(--bg-primary);">
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 section-header">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 section-title">
-                    <span class="inline-block">Portfolio</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-3 section-title">
+                    Portfolio
                 </h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto fade-in-up">
+                <div class="accent-line"></div>
+                <p class="text-lg max-w-2xl mx-auto fade-in-up mt-6">
                     Berikut adalah beberapa project yang telah saya kerjakan di bidang development dan data science
                 </p>
             </div>
@@ -111,26 +465,25 @@
     </section>
 
     <!-- Certification Section -->
-    <section id="certifications" class="py-20 px-6 bg-white relative overflow-hidden">
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        
+    <section id="certifications" class="py-20 px-6 bg-secondary relative overflow-hidden">
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 section-header">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 section-title">
-                    <span class="inline-block">Certifications</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-3 section-title">
+                    Certifications
                 </h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto fade-in-up">
+                <div class="accent-line"></div>
+                <p class="text-lg max-w-2xl mx-auto fade-in-up mt-6">
                     Sertifikasi profesional yang telah saya raih untuk meningkatkan kompetensi
                 </p>
             </div>
             
             <!-- Certification Filter -->
             <div class="flex flex-wrap justify-center gap-3 mb-16 filter-container">
-                <button class="cert-filter-btn active" data-type="All">All</button>
-                <button class="cert-filter-btn" data-type="Cloud">Cloud</button>
-                <button class="cert-filter-btn" data-type="Machine Learning">Machine Learning</button>
-                <button class="cert-filter-btn" data-type="Web Development">Web Development</button>
-                <button class="cert-filter-btn" data-type="Data Science">Data Science</button>
+                <button class="filter-btn cert-filter-btn active" data-type="All">All</button>
+                <button class="filter-btn cert-filter-btn" data-type="Cloud">Cloud</button>
+                <button class="filter-btn cert-filter-btn" data-type="Machine Learning">Machine Learning</button>
+                <button class="filter-btn cert-filter-btn" data-type="Web Development">Web Development</button>
+                <button class="filter-btn cert-filter-btn" data-type="Data Science">Data Science</button>
             </div>
 
             <!-- Certification Grid -->
@@ -141,23 +494,21 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 text-white py-16 px-6 relative overflow-hidden">
-        <div class="absolute inset-0 footer-pattern opacity-5"></div>
-        
+    <footer class="text-white py-16 px-6 relative overflow-hidden bg-gradient-dark border-accent-top">
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="text-center mb-12 fade-in-up">
                 <h3 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h3>
-                <p class="text-gray-300 text-lg">
+                <p class="text-lg">
                     Mari terhubung dan berdiskusi tentang peluang kolaborasi
                 </p>
             </div>
             
-            <div id="socialsContainer" class="flex justify-center gap-8 mb-12 flex-wrap social-container">
+            <div id="socialsContainer" class="flex justify-center gap-6 mb-12 flex-wrap social-container">
                 <!-- Social media links akan dimuat dari JSON -->
             </div>
             
-            <div class="border-t border-gray-700 pt-8 text-center">
-                <p class="text-gray-400 text-sm">
+            <div class="pt-8 text-center" style="border-top: 1px solid var(--border-color);">
+                <p class="text-sm" style="color: var(--text-muted);">
                     © 2025 <span id="footerName"></span>. All rights reserved.
                 </p>
             </div>
@@ -166,12 +517,11 @@
 
     <!-- Modal for Portfolio Details -->
     <div id="portfolioModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-content">
+        <div class="modal-content rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             <div class="p-8 md:p-12">
                 <div class="flex justify-between items-start mb-8">
-                    <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold text-gray-900 pr-8"></h3>
-                    <button id="closePortfolioModal" 
-                            class="text-gray-400 hover:text-gray-600 transition-all hover:rotate-90 flex-shrink-0">
+                    <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold pr-8"></h3>
+                    <button id="closePortfolioModal" class="transition-all hover:rotate-90 flex-shrink-0" style="color: var(--accent-primary);">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
@@ -182,15 +532,14 @@
                     <!-- Images akan dimuat di sini -->
                 </div>
                 
-                <p id="modalLongDesc" class="text-gray-700 text-lg leading-relaxed mb-8"></p>
+                <p id="modalLongDesc" class="text-lg leading-relaxed mb-8"></p>
                 
                 <div class="mb-8">
-                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Technologies Used:</h4>
+                    <h4 class="text-lg font-semibold mb-3">Technologies Used:</h4>
                     <div id="modalTech" class="flex flex-wrap gap-2"></div>
                 </div>
                 
-                <a id="modalLink" href="#" target="_blank" 
-                   class="btn-primary inline-flex">
+                <a id="modalLink" href="#" target="_blank" class="btn-primary">
                     <span>View Repository / Demo</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -202,32 +551,29 @@
 
     <!-- Modal for Certification Details -->
     <div id="certModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-content">
+        <div class="modal-content rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             <div class="p-8 md:p-12">
                 <div class="flex justify-between items-start mb-8">
-                    <h3 id="certModalTitle" class="text-3xl md:text-4xl font-bold text-gray-900 pr-8"></h3>
-                    <button id="closeCertModal" 
-                            class="text-gray-400 hover:text-gray-600 transition-all hover:rotate-90 flex-shrink-0">
+                    <h3 id="certModalTitle" class="text-3xl md:text-4xl font-bold pr-8"></h3>
+                    <button id="closeCertModal" class="transition-all hover:rotate-90 flex-shrink-0" style="color: var(--accent-primary);">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </div>
                 
-                <img id="certModalImage" src="" alt="Certificate" 
-                     class="w-full rounded-xl shadow-lg mb-8 border border-gray-200 cert-image">
+                <img id="certModalImage" src="" alt="Certificate" class="w-full rounded-xl shadow-lg mb-8 gallery-image cert-image">
                 
                 <div class="mb-6">
-                    <p class="text-gray-600 text-lg mb-2">
-                        <strong class="text-gray-900">Issuer:</strong> 
+                    <p class="text-lg mb-2">
+                        <strong>Issuer:</strong> 
                         <span id="certModalIssuer"></span>
                     </p>
                 </div>
                 
-                <p id="certModalDesc" class="text-gray-700 text-lg leading-relaxed mb-8"></p>
+                <p id="certModalDesc" class="text-lg leading-relaxed mb-8"></p>
                 
-                <a id="certModalLink" href="#" target="_blank" 
-                   class="btn-primary inline-flex">
+                <a id="certModalLink" href="#" target="_blank" class="btn-primary">
                     <span>Verify Certificate</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
