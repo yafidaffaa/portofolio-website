@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cert1",
+    "name": "TensorFlow Developer Certificate",
+    "issuer": "Google",
+    "type": "Machine Learning",
+    "description": "Sertifikasi resmi TensorFlow Developer yang membuktikan kemampuan membangun dan melatih model machine learning menggunakan TensorFlow framework.",
+    "link": "https://www.credential.net/tensorflow",
+    "image": "assets/profile.jpg",
+    "full_image": "assets/profile.jpg"
+  },
+  {
+    "id": "cert2",
+    "name": "AWS Certified Solutions Architect",
+    "issuer": "Amazon Web Services",
+    "type": "Cloud",
+    "description": "Sertifikasi AWS tingkat associate yang fokus pada desain solusi cloud yang scalable, reliable, dan cost-effective di platform AWS.",
+    "link": "https://aws.amazon.com/certification/",
+    "image": "assets/aws-cert-thumb.png",
+    "full_image": "assets/aws-cert.png"
+  },
+  {
+    "id": "cert3",
+    "name": "Professional Data Scientist",
+    "issuer": "DataCamp",
+    "type": "Data Science",
+    "description": "Sertifikasi komprehensif yang mencakup statistical analysis, machine learning, dan data visualization menggunakan Python dan R.",
+    "link": "https://www.datacamp.com/certification",
+    "image": "assets/datacamp-cert-thumb.png",
+    "full_image": "assets/datacamp-cert.png"
+  }
+]

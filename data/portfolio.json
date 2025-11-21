@@ -1,0 +1,46 @@
+[
+  {
+    "id": "proj1",
+    "title": "Sales Prediction Model",
+    "category": "Data Science",
+    "short_desc": "Model machine learning untuk memprediksi penjualan bulanan.",
+    "long_desc": "Proyek ini membangun model regresi menggunakan Scikit-learn untuk memprediksi penjualan bulanan berdasarkan data historis. Hasil model digunakan untuk strategi bisnis dan mencapai akurasi 92%. Model ini membantu perusahaan dalam perencanaan inventory dan strategi marketing.",
+    "tech": ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+    "link": "https://github.com/username/sales-predictor",
+    "image": "assets/profile.jpg",
+    "gallery": ["assets/profile.jpg", "assets/profile.jpg"]
+  },
+  {
+    "id": "proj2",
+    "title": "Mobile To-Do App",
+    "category": "Mobile Development",
+    "short_desc": "Aplikasi mobile untuk manajemen tugas harian.",
+    "long_desc": "Aplikasi ini dibuat menggunakan Flutter dan Firebase, mendukung CRUD task dengan autentikasi user. Fitur meliputi reminder, kategori tugas, dan sinkronisasi multi-device. UI/UX dirancang dengan Material Design untuk pengalaman pengguna yang optimal.",
+    "tech": ["Flutter", "Firebase", "Dart"],
+    "link": "https://github.com/username/todo-app",
+    "image": "assets/todo-thumb.png",
+    "gallery": ["assets/todo-1.png"]
+  },
+  {
+    "id": "proj3",
+    "title": "E-Commerce Dashboard",
+    "category": "Web Development",
+    "short_desc": "Dashboard admin untuk toko online dengan analitik real-time.",
+    "long_desc": "Dashboard responsif yang dibangun dengan React dan Node.js, menyediakan visualisasi data penjualan, manajemen produk, dan tracking inventory secara real-time. Dashboard ini meningkatkan efisiensi operasional hingga 40%.",
+    "tech": ["React", "Node.js", "MongoDB", "Chart.js"],
+    "link": "https://github.com/username/ecommerce-dashboard",
+    "image": "assets/dashboard-thumb.png",
+    "gallery": ["assets/dashboard-1.png"]
+  },
+  {
+    "id": "proj4",
+    "title": "Customer Segmentation Analysis",
+    "category": "Data Analysis",
+    "short_desc": "Analisis segmentasi pelanggan menggunakan clustering.",
+    "long_desc": "Proyek analisis data yang menggunakan K-Means clustering untuk segmentasi pelanggan berdasarkan perilaku pembelian. Hasil analisis membantu tim marketing dalam targeting kampanye yang lebih efektif dengan ROI meningkat 35%.",
+    "tech": ["Python", "Pandas", "Matplotlib", "Seaborn"],
+    "link": "https://github.com/username/customer-segmentation",
+    "image": "assets/segmentation-thumb.png",
+    "gallery": ["assets/segmentation-1.png"]
+  }
+]

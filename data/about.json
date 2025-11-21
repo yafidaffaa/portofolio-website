@@ -1,0 +1,7 @@
+{
+  "name": "Yafi Daffa Andriansyah",
+  "headline": "Software Developer & Data Scientist",
+  "short_bio": "Saya seorang data scientist dengan pengalaman di machine learning dan software development.",
+  "long_bio": "Berpengalaman dalam membangun model prediksi, analisis data, serta mengembangkan aplikasi web & mobile. Terbiasa dengan Python, R, JavaScript, dan SQL. Memiliki track record yang kuat dalam mengimplementasikan solusi data-driven yang memberikan dampak bisnis nyata.",
+  "skills": ["Python", "R", "TensorFlow", "Node.js", "React", "SQL", "Flutter", "Scikit-learn", "PostgreSQL", "Docker"]
+}

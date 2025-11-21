@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Data Scientist & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Hero / Introduction Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 px-6 py-16 overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-10"></div>
+        
+        <div class="text-center max-w-4xl relative z-10 hero-content">
+            <div class="mb-8 profile-container">
+                <div class="profile-ring"></div>
+                <img id="profilePhoto" src="assets/profile.jpg" alt="Profile Photo" 
+                     class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-2xl object-cover profile-image">
+            </div>
+            <h1 id="heroName" class="text-5xl md:text-7xl font-bold text-gray-900 mb-4 tracking-tight hero-name">
+                <!-- Nama akan dimuat dari JSON -->
+            </h1>
+            <div class="headline-container mb-6">
+                <p id="heroHeadline" class="text-xl md:text-2xl text-indigo-600 font-semibold hero-headline">
+                    <!-- Headline akan dimuat dari JSON -->
+                </p>
+            </div>
+            <p id="heroShortBio" class="text-gray-600 text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed hero-bio">
+                <!-- Short bio akan dimuat dari JSON -->
+            </p>
+            <button id="moreAboutBtn" 
+                    class="btn-primary group">
+                <span>More About Me</span>
+                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <div class="scroll-mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Me Expanded Section -->
+    <section id="aboutExpanded" class="hidden bg-white py-20 px-6 border-t-4 border-indigo-600 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10 about-content">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 section-title">
+                <span class="inline-block">About Me</span>
+            </h2>
+            <p id="longBio" class="text-gray-700 text-lg md:text-xl leading-relaxed mb-12 fade-in-up">
+                <!-- Long bio akan dimuat dari JSON -->
+            </p>
+            
+            <h3 class="text-3xl font-bold text-gray-900 mb-6 section-subtitle">Skills & Technologies</h3>
+            <div id="skillsContainer" class="flex flex-wrap gap-3 mb-12">
+                <!-- Skills badges akan dimuat dari JSON -->
+            </div>
+            
+            <button id="closeAboutBtn" 
+                    class="text-indigo-600 hover:text-indigo-800 font-semibold text-lg flex items-center gap-2 transition-all hover:gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to Top
+            </button>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-20 animate-blob"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 section-header">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 section-title">
+                    <span class="inline-block">Portfolio</span>
+                </h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto fade-in-up">
+                    Berikut adalah beberapa project yang telah saya kerjakan di bidang development dan data science
+                </p>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-3 mb-16 filter-container">
+                <button class="filter-btn active" data-category="All">All</button>
+                <button class="filter-btn" data-category="Mobile Development">Mobile Development</button>
+                <button class="filter-btn" data-category="Web Development">Web Development</button>
+                <button class="filter-btn" data-category="Data Science">Data Science</button>
+                <button class="filter-btn" data-category="Data Analysis">Data Analysis</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio cards akan dimuat dari JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Section -->
+    <section id="certifications" class="py-20 px-6 bg-white relative overflow-hidden">
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-100 rounded-full blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 section-header">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 section-title">
+                    <span class="inline-block">Certifications</span>
+                </h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto fade-in-up">
+                    Sertifikasi profesional yang telah saya raih untuk meningkatkan kompetensi
+                </p>
+            </div>
+            
+            <!-- Certification Filter -->
+            <div class="flex flex-wrap justify-center gap-3 mb-16 filter-container">
+                <button class="cert-filter-btn active" data-type="All">All</button>
+                <button class="cert-filter-btn" data-type="Cloud">Cloud</button>
+                <button class="cert-filter-btn" data-type="Machine Learning">Machine Learning</button>
+                <button class="cert-filter-btn" data-type="Web Development">Web Development</button>
+                <button class="cert-filter-btn" data-type="Data Science">Data Science</button>
+            </div>
+
+            <!-- Certification Grid -->
+            <div id="certGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certification cards akan dimuat dari JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 text-white py-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 footer-pattern opacity-5"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-12 fade-in-up">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h3>
+                <p class="text-gray-300 text-lg">
+                    Mari terhubung dan berdiskusi tentang peluang kolaborasi
+                </p>
+            </div>
+            
+            <div id="socialsContainer" class="flex justify-center gap-8 mb-12 flex-wrap social-container">
+                <!-- Social media links akan dimuat dari JSON -->
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 <span id="footerName"></span>. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Portfolio Details -->
+    <div id="portfolioModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-content">
+            <div class="p-8 md:p-12">
+                <div class="flex justify-between items-start mb-8">
+                    <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold text-gray-900 pr-8"></h3>
+                    <button id="closePortfolioModal" 
+                            class="text-gray-400 hover:text-gray-600 transition-all hover:rotate-90 flex-shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="modalGallery" class="mb-8 modal-gallery">
+                    <!-- Images akan dimuat di sini -->
+                </div>
+                
+                <p id="modalLongDesc" class="text-gray-700 text-lg leading-relaxed mb-8"></p>
+                
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Technologies Used:</h4>
+                    <div id="modalTech" class="flex flex-wrap gap-2"></div>
+                </div>
+                
+                <a id="modalLink" href="#" target="_blank" 
+                   class="btn-primary inline-flex">
+                    <span>View Repository / Demo</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Certification Details -->
+    <div id="certModal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-content">
+            <div class="p-8 md:p-12">
+                <div class="flex justify-between items-start mb-8">
+                    <h3 id="certModalTitle" class="text-3xl md:text-4xl font-bold text-gray-900 pr-8"></h3>
+                    <button id="closeCertModal" 
+                            class="text-gray-400 hover:text-gray-600 transition-all hover:rotate-90 flex-shrink-0">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <img id="certModalImage" src="" alt="Certificate" 
+                     class="w-full rounded-xl shadow-lg mb-8 border border-gray-200 cert-image">
+                
+                <div class="mb-6">
+                    <p class="text-gray-600 text-lg mb-2">
+                        <strong class="text-gray-900">Issuer:</strong> 
+                        <span id="certModalIssuer"></span>
+                    </p>
+                </div>
+                
+                <p id="certModalDesc" class="text-gray-700 text-lg leading-relaxed mb-8"></p>
+                
+                <a id="certModalLink" href="#" target="_blank" 
+                   class="btn-primary inline-flex">
+                    <span>Verify Certificate</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="script.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
